@@ -37,17 +37,25 @@
 <h3 style="clear:both; margin-top: 100px">Reviews</h3>
 
 <p>Write a review</p>
-<form action="/reviews/<%= @place.id %>/submit_new">
-  <select name="rating">
-    <option>5 star</option>
-    <option>4 star</option>
-    <option>3 star</option>
-    <option>2 star</option>
-    <option>1 star</option>
-  </select>
-  <input name="desc" size="50">
-  <button>Submit</button>
-</form>
+
+<%= form_tag "/reviews/#{@place.id}" do %>
+  <div>
+	<select name="rating">
+		<option>5 star</option>
+		<option>4 star</option>
+		<option>3 star</option>
+		<option>2 star</option>
+		<option>1 star</option>
+	</select>
+  </div>
+
+  <div>
+    <input name="desc" size="50">
+  </div>
+
+  <input type="submit" value="Submit">
+  
+<% end %>
 
 <% Review.where(place_id: @place.id).each do |review| %>
   <p>
