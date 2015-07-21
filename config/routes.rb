@@ -12,6 +12,6 @@ Rails.application.routes.draw do
 
   delete '/places/:id' => 'places#destroy'
   
-  post '/reviews/:place_id'  => 'reviews#create'
+  post '/reviews'  => 'reviews#create'
 
 end
